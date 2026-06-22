@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thalamus — Medical Literacy for Everyone</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Tabler Icons (free icon library) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="logo-mark">T</div>
+    <span class="brand-name">Thalamus</span>
+    <span class="brand-tag">Medical literacy for everyone</span>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main">
+
+    <p class="hero-label">AI-powered health guide</p>
+    <h1 class="hero-heading">Ask any health question.<br>Get answers you actually understand.</h1>
+    <p class="hero-sub">
+      Type a medical term, symptom, or question below. Thalamus explains it
+      in plain language — like a doctor friend who actually has time to talk.
+    </p>
+
+    <!-- Sample question chips -->
+    <div class="chips">
+      <span class="chip" onclick="setQuestion('Why do we get a fever?')">Why do we get a fever?</span>
+      <span class="chip" onclick="setQuestion('What is diabetes?')">What is diabetes?</span>
+      <span class="chip" onclick="setQuestion('Why does blood pressure increase?')">Why does blood pressure increase?</span>
+      <span class="chip" onclick="setQuestion('What does a high creatinine level mean?')">What does high creatinine mean?</span>
+      <span class="chip" onclick="setQuestion('What is the difference between viral and bacterial infection?')">Viral vs bacterial infection?</span>
+    </div>
+
+    <!-- Input box -->
+    <div class="input-card">
+      <p class="input-label">Your question</p>
+      <textarea
+        id="questionInput"
+        placeholder="e.g. My doctor said my hemoglobin is low. What does that mean?"
+        maxlength="500"
+        oninput="updateCount()"
+      ></textarea>
+      <div class="input-footer">
+        <span class="char-count" id="charCount">0 / 500</span>
+        <button class="ask-btn" id="askBtn" onclick="askThalamus()" disabled>
+          <i class="ti ti-brain"></i> Ask Thalamus
+        </button>
+      </div>
+    </div>
+
+    <!-- Error message (hidden by default) -->
+    <div class="error-card" id="errorCard">
+      <i class="ti ti-alert-circle"></i>
+      <span id="errorMsg">Something went wrong. Please try again.</span>
+    </div>
+
+    <!-- Loading animation (hidden by default) -->
+    <div class="loading-state" id="loadingState">
+      <div class="loading-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <p class="loading-text">Thalamus is thinking...</p>
+    </div>
+
+    <!-- Results (hidden until AI responds) -->
+    <div class="result-area" id="resultArea">
+
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon icon-blue"><i class="ti ti-message-question"></i></div>
+          <span class="section-title">Your question</span>
+        </div>
+        <p class="question-display" id="displayedQuestion"></p>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon icon-teal"><i class="ti ti-book"></i></div>
+          <span class="section-title">Simple explanation</span>
+        </div>
+        <div class="section-body" id="simpleExplanation"></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon icon-blue"><i class="ti ti-list-check"></i></div>
+          <span class="section-title">Key takeaways</span>
+        </div>
+        <ul class="key-points" id="keyTakeaways"></ul>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon icon-amber"><i class="ti ti-stethoscope"></i></div>
+          <span class="section-title">When to see a doctor</span>
+        </div>
+        <div class="section-body" id="whenDoctor"></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon icon-red"><i class="ti ti-clipboard-list"></i></div>
+          <span class="section-title">Questions to ask your doctor</span>
+        </div>
+        <ul class="doctor-q" id="doctorQuestions"></ul>
+      </div>
+
+      <p class="disclaimer">
+        <strong>Heads up:</strong> Thalamus is an educational tool, not a substitute
+        for professional medical advice. Always consult a qualified doctor for
+        diagnosis and treatment.
+      </p>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
