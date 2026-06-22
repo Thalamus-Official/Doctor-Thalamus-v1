@@ -34,6 +34,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+ console.error("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+  
   // Get the question from the request body
   const { question } = req.body;
 
@@ -43,7 +45,7 @@ export default async function handler(req, res) {
 
   // API key is read from Vercel environment variables (never exposed to browser)
   const API_KEY = process.env.GEMINI_API_KEY;
-
+console.error("*******************************************");
   if (!API_KEY) {
     return res.status(500).json({ error: "API key not configured" });
   }
@@ -77,11 +79,12 @@ export default async function handler(req, res) {
       throw new Error("Gemini API error: " + geminiResponse.status);
     }
 
+    console.error("22222222222222222222222222222222222222222222");
     const data = await geminiResponse.json();
     const rawText = data.candidates[0].content.parts[0].text;
     const cleanText = rawText.replace(/```json|```/g, "").trim();
     const parsed = JSON.parse(cleanText);
-
+console.error("3333333333333333333333333333333333");
     // Send the parsed result back to the browser
     return res.status(200).json(parsed);
 
