@@ -6,7 +6,7 @@
 
 // ⚠️  PUT YOUR GEMINI API KEY HERE
 //  Get one free at: https://aistudio.google.com
-const API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+const API_KEY = "AQ.Ab8RN6IUpHiDkhzTHTEfn_5s6J6byvOKBKWwaAxbFnoGr1zIGg";
 
 // Gemini model to use (free tier supports this)
 const MODEL = "gemini-1.5-flash";
