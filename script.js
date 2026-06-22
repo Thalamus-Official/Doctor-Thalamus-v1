@@ -57,6 +57,7 @@ async function askThalamus() {
   try {
     // Call YOUR Vercel backend — not Gemini directly
     // /api/ask is the serverless function in api/ask.js
+    console.error("99999999999999999999999999999999999");
     const response = await fetch('/api/ask', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
